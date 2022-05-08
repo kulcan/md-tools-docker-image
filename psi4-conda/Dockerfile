@@ -18,11 +18,15 @@ RUN /bin/bash ~/miniconda.sh -b -p /opt/conda && \
     echo ". /opt/conda/etc/profile.d/conda.sh" >> ~/.bashrc && \
     echo "conda activate base" >> ~/.bashrc
 
+RUN pip install ase
+
 ENV TINI_VERSION v0.19.0
 ADD https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini /usr/bin/tini
 RUN chmod +x /usr/bin/tini
 
-COPY sample-psi4.py ./
+COPY test-psi4.py ./
+COPY test-ase.py ./
+
 
 ENTRYPOINT [ "/usr/bin/tini", "--" ]
 CMD [ "/bin/bash" ]
