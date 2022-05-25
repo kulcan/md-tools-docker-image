@@ -20,6 +20,12 @@ RUN /bin/bash ~/miniconda.sh -b -p /opt/conda && \
 
 RUN pip install ase
 
+RUN conda install -c conda-forge mamba
+RUN apt-get update
+RUN apt-get install -y libgmp3-dev
+RUN mamba install -y sage -c conda-forge
+
+
 ENV TINI_VERSION v0.19.0
 ADD https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini /usr/bin/tini
 RUN chmod +x /usr/bin/tini
@@ -30,3 +36,5 @@ COPY test-ase.py ./
 
 ENTRYPOINT [ "/usr/bin/tini", "--" ]
 CMD [ "/bin/bash" ]
+
+# docker build . -t psi4:v1 --progress=plain
