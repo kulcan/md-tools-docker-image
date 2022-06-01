@@ -25,16 +25,13 @@ RUN apt-get update
 RUN apt-get install -y libgmp3-dev
 RUN mamba install -y sage -c conda-forge
 
+RUN conda install -c conda-forge jupyterlab
+RUN conda install -c conda-forge openmm
 
-ENV TINI_VERSION v0.19.0
-ADD https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini /usr/bin/tini
-RUN chmod +x /usr/bin/tini
+COPY 1ubq.pdb ./
+COPY test.ipynb ./
 
-COPY test-psi4.py ./
-COPY test-ase.py ./
-
-
-ENTRYPOINT [ "/usr/bin/tini", "--" ]
-CMD [ "/bin/bash" ]
+EXPOSE 8888
+ENTRYPOINT ["jupyter", "notebook", "--no-browser", "--ip=0.0.0.0","--NotebookApp.token=''", "--NotebookApp.password=''", "--allow-root"]
 
 # docker build . -t psi4:v1 --progress=plain
