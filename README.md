@@ -1,4 +1,4 @@
-# MDTools in Docker
+# MDTools para Docker
 Especificación de una imagen en Docker sobre [Ubuntu 22.04 LTS](https://ubuntu.com/download) con herramientas para dinámica molecular. Tamaño aproximado 16GB con todos los paquetes.
 
 Esta imagen incluye:
@@ -11,7 +11,7 @@ Todo corriendo bajo un mismo entorno en [Python 3.8](https://www.python.org/) co
 
 ## Instrucciones de instalación
 1. Tener [Docker](https://www.docker.com/) instalado en su computadora.
-2. Para crear la imagen simplemente hay que ir a la carpeta ./docker y ejecutar el comando}
+2. Para crear la imagen simplemente hay que ir a la carpeta ./docker y ejecutar el comando
 
     ```
     docker build . -t md-tools:v1 --progress=plain
