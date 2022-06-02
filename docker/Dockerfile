@@ -33,5 +33,3 @@ COPY test.ipynb ./
 
 EXPOSE 8888
 ENTRYPOINT ["jupyter", "notebook", "--no-browser", "--ip=0.0.0.0","--NotebookApp.token=''", "--NotebookApp.password=''", "--allow-root"]
-
-# docker build . -t psi4:v1 --progress=plain
