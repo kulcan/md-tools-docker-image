@@ -27,9 +27,10 @@ RUN mamba install -y sage -c conda-forge
 
 RUN conda install -c conda-forge jupyterlab
 RUN conda install -c conda-forge openmm
+RUN conda install -c conda-forge xeus-python
 
 COPY 1ubq.pdb ./
 COPY test.ipynb ./
 
 EXPOSE 8888
-ENTRYPOINT ["jupyter", "notebook", "--no-browser", "--ip=0.0.0.0","--NotebookApp.token=''", "--NotebookApp.password=''", "--allow-root"]
+ENTRYPOINT ["jupyter", "lab", "--no-browser", "--ip=0.0.0.0","--NotebookApp.token=''", "--NotebookApp.password=''", "--allow-root"]
