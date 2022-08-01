@@ -14,7 +14,7 @@ Todo corriendo bajo un mismo entorno en [Python 3.8](https://www.python.org/) co
 2. Para crear la imagen simplemente hay que ir a la carpeta ./docker y ejecutar el comando
 
     ```
-    docker build . -t md-tools:v1 --progress=plain
+    docker build . -t md-tools:v4 --progress=plain
     ```
 3. Despúes podemos correr el contenedor en el puerto 8888 de nuestra computadora
 

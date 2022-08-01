@@ -31,6 +31,9 @@ RUN conda install -c conda-forge xeus-python
 
 COPY 1ubq.pdb ./
 COPY test.ipynb ./
+COPY dft_example_debug.py ./
+COPY dft_example.ipynb ./
+COPY dft_scratch.py ./
 
 EXPOSE 8888
 ENTRYPOINT ["jupyter", "lab", "--no-browser", "--ip=0.0.0.0","--NotebookApp.token=''", "--NotebookApp.password=''", "--allow-root"]
