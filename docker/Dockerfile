@@ -16,18 +16,17 @@ RUN /bin/bash ~/miniconda.sh -b -p /opt/conda && \
     /opt/conda/bin/conda clean -tipsy && \
     ln -s /opt/conda/etc/profile.d/conda.sh /etc/profile.d/conda.sh && \
     echo ". /opt/conda/etc/profile.d/conda.sh" >> ~/.bashrc && \
-    echo "conda create --name main python=3.9" >> ~/.bashrc && \
-    echo "conda activate main" >> ~/.bashrc
+    echo "conda activate base" >> ~/.bashrc
 
-RUN pip install ase
 
 RUN apt-get update
 RUN apt-get install -y libgmp3-dev
-RUN conda install -c conda-forge sage 
-
-RUN conda install -c conda-forge jupyterlab
-RUN conda install -c conda-forge openmm
-RUN conda install -c conda-forge xeus-python
+RUN conda config --add channels conda-forge
+RUN conda install mamba
+RUN mamba install -y sage
+RUN conda install jupyterlab
+RUN conda install openmm
+RUN conda install ase
 
 COPY 1ubq.pdb ./
 COPY test.ipynb ./
