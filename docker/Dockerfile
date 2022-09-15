@@ -22,17 +22,16 @@ RUN /bin/bash ~/miniconda.sh -b -p /opt/conda && \
 RUN apt-get update
 RUN apt-get install -y libgmp3-dev
 RUN conda config --add channels conda-forge
-RUN conda install mamba
-RUN mamba install -y sage
 RUN conda install jupyterlab
 RUN conda install openmm
 RUN conda install ase
 
-COPY 1ubq.pdb ./
-COPY test.ipynb ./
-COPY dft_example_debug.py ./
-COPY dft_example.ipynb ./
-COPY dft_scratch.py ./
+COPY 1ubq.pdb ./home
+COPY test.ipynb ./home
+COPY dft_example_debug.py ./home
+COPY dft_example.ipynb ./home
+COPY derivada_funcional_sympy.ipynb ./home
+COPY dft_scratch.py ./home
 
 EXPOSE 8888
 ENTRYPOINT ["jupyter", "lab", "--no-browser", "--ip=0.0.0.0","--NotebookApp.token=''", "--NotebookApp.password=''", "--allow-root"]
