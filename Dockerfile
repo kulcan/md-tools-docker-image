@@ -25,6 +25,7 @@ RUN conda config --add channels conda-forge
 RUN conda install jupyterlab
 RUN conda install openmm
 RUN conda install ase
+RUN conda install sympy
 
 COPY test.ipynb ./home
 
