@@ -26,7 +26,7 @@ RUN conda install jupyterlab
 RUN conda install openmm
 RUN conda install ase
 RUN conda install sympy
-RUN conda install rpmuller pyquante2_pure
+RUN conda install -c rpmuller pyquante2_pure
 
 COPY test.ipynb ./home
 
